@@ -1,13 +1,13 @@
-from flask import Flask, jsonify, request
+from fastapi import FastAPI
+import uvicorn
 
-app = Flask(__name__)
+app = FastAPI()
 
 
 @app.get("/payment")
-def payment():
-    payment = request.args.get("payment", type=str)
-    return jsonify({})
+def payment(payment: str):
+    return {}
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9000)
+    uvicorn.run(app, host="0.0.0.0", port=9000)
